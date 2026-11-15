@@ -31,7 +31,7 @@ Keep strict certificate verification enabled. Leave global Node, npm and Windows
 
 ## Open a board
 
-Developer-operated checks ran the foreground `npm start` workflow on a synthetic board with reused, verified dependencies. They covered saving and reopening, private backup, local public JSON export, restoring into a separate directory and exiting through **Quit**. Use the [first-use checklist](FIRST-USE-CHECKLIST.md) to record your own results. Independent first-user setup and a fresh public package download remain unverified.
+Developer-operated checks ran the foreground `npm start` workflow on a synthetic board with reused, verified dependencies. They covered saving and reopening, private backup, local public JSON export, restoring into a separate directory and exiting through **Quit**. Use the [first-use checklist](FIRST-USE-CHECKLIST.md) to record your own results. A fresh download of the public v0.1.0 package passed the same clean install. Independent first-user setup remains unverified.
 
 1. In the app directory, start the foreground process with your absolute board path.
 
