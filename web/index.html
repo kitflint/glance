@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KitFlint Glance</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to board</a>
+  <header class="masthead">
+    <div class="shell header-inner">
+      <div>
+        <p class="brand">KitFlint <span>Glance</span></p>
+        <p id="header-project" class="header-project">Local board</p>
+      </div>
+      <div class="header-actions">
+        <p id="freshness"></p>
+        <button id="quit" type="button" class="header-button" hidden>Quit</button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="shell" tabindex="-1">
+    <h1>Made for human eyes. Built for clear decisions.</h1>
+    <p id="notice" class="notice" role="status" aria-live="polite">Connecting to the local board…</p>
+    <section id="access-panel" class="panel gate" hidden>
+      <h2>Open the existing Glance tab</h2>
+      <p id="access-message">Return to the tab that opened this board, or restart the local host and use its new launch link.</p>
+    </section>
+    <section id="initialization" class="gate" hidden aria-labelledby="start-title">
+      <h2 id="start-title">Start a local board</h2>
+      <div class="start-grid">
+        <form id="blank-form" class="panel">
+          <h3>Blank board</h3>
+          <label for="blank-name">Project name</label>
+          <input id="blank-name" name="projectName" maxlength="200" required>
+          <button class="primary" type="submit">Create blank board</button>
+        </form>
+        <section class="panel">
+          <h3>Editable sample</h3>
+          <p class="muted">Explore a synthetic project with two tasks and an evidence reference.</p>
+          <button id="create-sample" type="button">Create sample board</button>
+        </section>
+        <form id="import-form" class="panel">
+          <h3>Import a JSON backup</h3>
+          <label for="backup-file">Backup file</label>
+          <input id="backup-file" type="file" accept=".json,application/json" required>
+          <label for="import-identity">Import as</label>
+          <select id="import-identity">
+            <option value="new">New board</option>
+            <option value="restore">Restore original board identity</option>
+            <option value="continue">Continue review cycle</option>
+          </select>
+          <label id="continue-confirm-label" class="check-row" hidden>
+            <input id="continue-confirm" type="checkbox" disabled>
+            I retained the original board directory and its full current backup.
+          </label>
+          <button type="submit">Import backup</button>
+        </form>
+      </div>
+      <button id="check-initialization" type="button" hidden>Check saved board</button>
+    </section>
+    <section id="recovery" class="panel gate" hidden aria-labelledby="recovery-title">
+      <h2 id="recovery-title">Recovery only</h2>
+      <p>The latest changes are unknown. Quit and keep the original directory. Launch against a new empty directory and import a backup using Restore original board identity.</p>
+      <p id="recovery-detail" class="muted"></p>
+      <button id="recover-download" class="primary" type="button" hidden>Download recovery backup</button>
+    </section>
+    <section id="shutdown" class="panel gate" hidden aria-labelledby="shutdown-title">
+      <h2 id="shutdown-title">Shutdown requested</h2>
+      <p>Confirm the host process has exited in the terminal before restarting.</p>
+      <button id="check-host" type="button">Check host</button>
+    </section>
+
+    <section id="board" hidden aria-labelledby="project-name">
+      <div class="project-bar">
+        <div>
+          <div class="project-title"><h2 id="project-name" tabindex="-1"></h2><span id="project-stage" class="pill"></span></div>
+          <p id="project-goal" class="preserve"></p>
+        </div>
+        <div class="actions">
+          <button id="edit-project" type="button" data-focus-key="edit-project">Edit project</button>
+          <button id="refresh" type="button">Refresh board</button>
+          <button id="prepare-export" type="button">Prepare export</button>
+          <button id="open-public-report" type="button" aria-expanded="false" aria-controls="public-report">Public report</button>
+          <button id="open-github" type="button" aria-expanded="false" aria-controls="github-panel">GitHub</button>
+        </div>
+      </div>
+      <section id="export-panel" class="panel export-panel" hidden aria-labelledby="export-title">
+        <h3 id="export-title">Private export</h3>
+        <p id="export-meta" class="muted"></p>
+        <div class="actions" id="export-links"></div>
+        <p id="export-status" role="status" class="muted"></p>
+      </section>
+      <section id="github-panel" class="panel github-panel" hidden aria-labelledby="github-title">
+        <div class="section-heading">
+          <h3 id="github-title" tabindex="-1">GitHub</h3>
+          <button id="close-github" type="button">Close GitHub</button>
+        </div>
+        <p id="github-message" class="muted" role="status" aria-live="polite"></p>
+        <div id="github-content" aria-describedby="github-message"></div>
+      </section>
+      <section id="public-report" class="panel export-panel" hidden aria-labelledby="public-report-title">
+        <div class="section-heading">
+          <h3 id="public-report-title" tabindex="-1">Public report</h3>
+          <button id="close-public-report" type="button">Close public report</button>
+        </div>
+        <p>Private notes, evidence paths and review history are excluded. Dates, counts, task states, group membership and prerequisites are shared.</p>
+        <p class="muted">Generic labels are used unless you supply public labels. Current names can contain private information. Review every name you choose to share.</p>
+        <div class="actions">
+          <button id="public-current-names" type="button">Use current names</button>
+          <button id="public-generic-names" type="button">Use generic labels</button>
+        </div>
+        <div id="public-labels" class="public-labels"></div>
+        <button id="prepare-public-report" type="button" class="primary">Prepare public preview</button>
+        <p id="public-status" role="status" aria-live="polite"></p>
+        <section id="public-preview" hidden aria-labelledby="public-preview-title">
+          <h4 id="public-preview-title" tabindex="-1">Public preview</h4>
+          <div id="public-preview-content"></div>
+          <label class="check-row"><input id="confirm-public-report" type="checkbox" disabled>
+            I reviewed these exact public contents and want to download them.
+          </label>
+          <div class="actions" id="public-downloads"></div>
+        </section>
+      </section>
+      <nav id="view-navigation" class="view-nav" aria-label="Board views">
+        <button type="button" data-view="overview" aria-current="page">Overview</button>
+        <button type="button" data-view="journey">Journey</button>
+        <button type="button" data-view="review">Review</button>
+        <button type="button" data-view="evidence">Evidence</button>
+      </nav>
+      <section id="overview" class="board-view" aria-label="Overview">
+        <div id="summary" class="stats"></div>
+        <p class="scope-note">Open counts tasks without current acceptance. Workflow statuses are counted separately and can overlap acceptance.</p>
+        <section id="focus" class="focus" aria-labelledby="focus-title">
+          <h3 id="focus-title">Current focus</h3>
+          <div id="focus-content"></div>
+        </section>
+        <section class="milestone-section" aria-labelledby="milestone-title">
+          <div class="section-heading">
+            <h3 id="milestone-title">Milestones</h3>
+            <button id="add-milestone" type="button" data-focus-key="add-milestone">Add milestone</button>
+          </div>
+          <div id="milestones" class="milestone-grid"></div>
+        </section>
+        <div class="workspace">
+          <aside class="panel sidebar" aria-labelledby="workstream-title">
+            <h3 id="workstream-title">Workstreams</h3>
+            <div id="workstreams"></div>
+            <button id="add-workstream" type="button" data-focus-key="add-workstream">Add workstream</button>
+          </aside>
+          <section class="task-area" aria-labelledby="task-list-title">
+            <div class="section-heading">
+              <h3 id="task-list-title">Tasks</h3>
+              <button id="add-task" class="primary" type="button" data-focus-key="add-task">Add task</button>
+            </div>
+            <div class="filter-row">
+              <label for="task-search">Search tasks<input id="task-search" type="search" autocomplete="off"></label>
+              <label for="task-status">Status<select id="task-status">
+                <option value="">Any status</option>
+                <option>Planned</option><option>In progress</option><option>Needs review</option><option>Blocked</option>
+              </select></label>
+              <div class="actions view-toggle" aria-label="Task layout" role="group">
+                <button id="cards-mode" type="button" aria-pressed="true">Cards</button>
+                <button id="table-mode" type="button" aria-pressed="false">Table</button>
+              </div>
+            </div>
+            <div id="scope-chips" class="actions scope-chips"></div>
+            <p id="matches" class="muted" aria-live="polite"></p>
+            <div id="task-list"></div>
+          </section>
+        </div>
+      </section>
+      <section id="journey" class="board-view" hidden aria-labelledby="journey-title">
+        <div class="section-heading"><h3 id="journey-title">Journey</h3></div>
+        <div id="journey-list" class="milestone-grid"></div>
+      </section>
+      <section id="review" class="board-view" hidden aria-labelledby="review-title">
+        <div class="section-heading">
+          <h3 id="review-title">Task review</h3>
+          <span>Private backup</span>
+          <button id="download-review-archive" type="button">Download review archive</button>
+        </div>
+        <p id="review-capacity" class="scope-note"></p>
+        <p id="review-archive-notice" class="scope-note preserve"></p>
+        <p id="review-backup-status" class="muted preserve" role="status"></p>
+        <p><a href="#review-cycle-instructions" id="review-cycle-link">Review cycle instructions</a></p>
+        <details id="review-cycle-instructions" class="panel">
+          <summary>Continue a review cycle</summary>
+          <ol>
+            <li>Stop assistant and MCP writers connected to this board.</li>
+            <li>Download and retain its full current backup. Quit the host and confirm it exited. Keep the old board directory.</li>
+            <li>Launch Glance in a new empty directory. Import the backup with Continue review cycle and confirm retention.</li>
+            <li>Verify the new board and keep the chain of predecessor backups. Point assistants to the new directory only after verification.</li>
+          </ol>
+          <p>If the tasks, evidence and one review cannot fit in a new cycle, split the board into smaller project scopes.</p>
+        </details>
+        <div id="review-list"></div>
+      </section>
+      <section id="evidence" class="board-view" hidden aria-labelledby="evidence-title">
+        <div class="section-heading">
+          <h3 id="evidence-title">Evidence</h3>
+          <button id="add-evidence" class="primary" type="button" data-focus-key="add-evidence">Add evidence</button>
+        </div>
+        <div id="evidence-list" class="evidence-list"></div>
+      </section>
+    </section>
+  </main>
+  <dialog id="detail-dialog" aria-labelledby="detail-title">
+    <div class="dialog-heading">
+      <div><p id="detail-id" class="record-id"></p><h2 id="detail-title" tabindex="-1"></h2></div>
+      <button id="close-detail" type="button">Close</button>
+    </div>
+    <div id="detail-body"></div>
+  </dialog>
+  <dialog id="review-dialog" aria-labelledby="review-dialog-title">
+    <div class="dialog-heading">
+      <div><h2 id="review-dialog-title" tabindex="-1">Review task</h2><p id="review-version" class="muted"></p></div>
+      <button id="close-review" type="button">Close review</button>
+    </div>
+    <form id="review-form">
+      <div id="review-subject"></div>
+      <label for="reviewer">Reviewer name</label>
+      <input id="reviewer" name="reviewer" maxlength="200" required>
+      <label for="review-scope">Reviewed scope</label>
+      <input id="review-scope" name="scope" maxlength="500" required>
+      <label for="review-note">Review note</label>
+      <textarea id="review-note" name="note" maxlength="2000" required></textarea>
+      <label for="review-decision">Decision</label>
+      <select id="review-decision" name="decision" required>
+        <option value="">Choose a decision</option>
+        <option value="accepted">Accept this scope</option>
+        <option value="changes-requested">Request changes</option>
+      </select>
+      <label class="check-row">
+        <input id="review-confirm" type="checkbox" required>
+        I reviewed the displayed criteria and evidence.
+      </label>
+      <p id="review-message" class="preserve" role="status" tabindex="-1"></p>
+      <div id="review-saved-history" hidden></div>
+      <div class="actions form-actions">
+        <button id="submit-review" class="primary" type="submit">Confirm review</button>
+        <button id="refresh-review" type="button" hidden>Read saved review history</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="edit-dialog" aria-labelledby="edit-title">
+    <div class="dialog-heading">
+      <div><h2 id="edit-title"></h2><p id="edit-version" class="muted"></p></div>
+      <button id="close-editor" type="button">Cancel</button>
+    </div>
+    <form id="edit-form" novalidate>
+      <section id="form-errors" class="form-errors" hidden aria-labelledby="errors-title">
+        <h3 id="errors-title" tabindex="-1">Check your entries</h3>
+        <ul id="error-list"></ul>
+      </section>
+      <section id="comparison" class="comparison" hidden aria-labelledby="comparison-title">
+        <h3 id="comparison-title" tabindex="-1">This board changed</h3>
+        <div id="compare-values"></div>
+        <div class="actions">
+          <button id="reload-draft" type="button">Reload saved board</button>
+          <button id="reapply-draft" type="button">Reapply draft</button>
+        </div>
+      </section>
+      <div id="fields"></div>
+      <div class="actions form-actions">
+        <button id="save" class="primary" type="submit">Save changes</button>
+        <button id="check-outcome" type="button" hidden>Compare with saved board</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

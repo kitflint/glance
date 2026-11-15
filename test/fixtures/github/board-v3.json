@@ -1,0 +1,26 @@
+{
+  "connectionEpoch": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+  "repository": {
+    "id": "1234",
+    "installationId": "55",
+    "installationPageHint": 1,
+    "repositoryPageHint": 1,
+    "owner": "fixture-org",
+    "name": "private-fixture-repo",
+    "visibility": "private",
+    "defaultBranch": "main",
+    "selectedAt": "2026-11-13T01:00:00Z",
+    "selectedByHuman": true
+  },
+  "issue": {
+    "issueId": "301",
+    "number": 31,
+    "remoteUpdatedAt": "2026-11-13T01:00:00Z",
+    "fetchedAt": "2026-11-13T01:00:00Z",
+    "values": {
+      "title": "Fixture issue",
+      "body": "Private fixture issue body",
+      "state": "open"
+    }
+  }
+}

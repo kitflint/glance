@@ -1,0 +1,39 @@
+name: Bug report
+description: Report a non-sensitive problem you can reproduce with synthetic data.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep tokens, private launch links, board or repository data and vulnerability details out of public issues.
+        Use a synthetic board and review any logs before posting.
+  - type: input
+    id: versions
+    attributes:
+      label: Versions and environment
+      description: Include Glance, Node.js and Windows versions, plus browser or local MCP client versions if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce with synthetic data
+      description: Describe the workflow using the sample board or a disposable synthetic board.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Redacted logs or messages
+      description: Optional. Paste only relevant excerpts with credentials, private paths and board data removed.
