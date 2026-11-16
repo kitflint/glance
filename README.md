@@ -15,7 +15,7 @@
 
 <sub>The Glance board, captured from the real v0.1.0 app with the editable sample and two example GitHub issues. All data is synthetic.</sub>
 
-Glance is a free, MIT-licensed, local-first project board for Windows x64. Use the visual dashboard to see the saved revision, focus, milestones, workstreams and evidence. Create a blank board or try the editable sample without an assistant or GitHub account.
+Glance is a free, MIT-licensed, local-first project board. The v0.1.0 pre-release is Windows x64 only; macOS and Linux aren't supported yet. Use the visual dashboard to see the saved revision, focus, milestones, workstreams and evidence. Create a blank board or try the editable sample without an assistant or GitHub account.
 
 **Website and setup guide with screenshots: [kitflint.com/glance](https://kitflint.com/glance/)**
 

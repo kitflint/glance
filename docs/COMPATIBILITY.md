@@ -2,7 +2,7 @@
 
 | Area | Current evidence and limits |
 | --- | --- |
-| Platform | Local qualification used Windows x64, writable local NTFS board directories and Node.js 24.22.1. Other operating systems, filesystems and synchronized board directories are outside the verified scope. |
+| Platform | **v0.1.0 pre-release · Windows x64 only.** macOS and Linux aren't supported yet; Glance won't start there. Local qualification used Windows x64, writable local NTFS board directories and Node.js 24.22.1. Other filesystems and synchronized board directories are outside the verified scope. |
 | Local visual board | Synthetic checks covered create, edit, reopen, review and local security. On 15 November 2026 all six browser journeys (core, public report, review, security, GitHub connection and GitHub publication) passed in one run at desktop and narrow widths. |
 | Automated checks | TypeScript typecheck and all 159 cases in the 15-file serial suite passed in one run on 15 November 2026 with Node.js 24.22.1 on Windows x64. |
 | Local MCP | Two actual assistant products completed a read and a guarded title update on a synthetic board on Windows: **Claude Desktop** 5.11492.5.0 (x64) and **Claude Code** 2.1.325. Each update committed exactly one revision, and the task stayed unreviewed. Earlier bundled Codex CLI attempts produced no verifiable Glance calls. Other clients have not been tested. See [Local MCP tools](MCP.md#tested-clients). |
