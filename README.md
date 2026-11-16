@@ -8,6 +8,9 @@
 [![Node.js 24.22.1](https://img.shields.io/badge/node-24.22.1-339933)](docs/QUICKSTART.md)
 [![Local MCP](https://img.shields.io/badge/MCP-local%20stdio-6f42c1)](docs/MCP.md)
 
+> [!IMPORTANT]
+> **v0.1.0 pre-release · Windows x64 only.** macOS and Linux aren't supported yet; Glance won't start there. Tested on Windows 11 with Node.js 24.22.1 and npm 12.2.2.
+
 ![The Glance board: summary counts, current focus with next actions, milestones, workstreams and task cards showing status, review state and whether each task is local only or linked to a GitHub issue.](docs/images/glance-board.png)
 
 <sub>The Glance board, captured from the real v0.1.0 app with the editable sample and two example GitHub issues. All data is synthetic.</sub>
