@@ -1,62 +1,38 @@
 <!doctype html>
-<!-- KitFlint Glance landing page. Self-contained: no external assets, scripts, fonts or trackers. -->
+<!-- KitFlint Glance: the project page now lives at kitflint.com/glance/. Self-contained: no scripts, external assets or trackers. -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KitFlint Glance</title>
-  <meta name="description" content="A free, local-first project board that shows where your project stands at a glance. No ads, no trackers.">
+  <meta name="description" content="KitFlint Glance has moved to kitflint.com/glance/: a free, local-first project board with optional GitHub issue sync and local MCP.">
+  <link rel="canonical" href="https://kitflint.com/glance/">
+  <meta http-equiv="refresh" content="0; url=https://kitflint.com/glance/">
+  <meta name="robots" content="noindex, follow">
   <style>
-    :root { --bg: #fafafa; --fg: #171717; --muted: #525252; --line: #e5e5e5; --panel: #ffffff; --accent: #171717; --accent-fg: #ffffff; }
+    :root { --bg: #fafafa; --fg: #171717; --muted: #525252; --line: #e5e5e5; --accent: #171717; --accent-fg: #ffffff; }
     @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) { --bg: #111111; --fg: #f2f2f2; --muted: #b0b0b0; --line: #2c2c2c; --panel: #1a1a1a; --accent: #f2f2f2; --accent-fg: #111111; }
+      :root:not([data-theme="light"]) { --bg: #111111; --fg: #f2f2f2; --muted: #b0b0b0; --line: #2c2c2c; --accent: #f2f2f2; --accent-fg: #111111; }
     }
-    :root[data-theme="dark"] { --bg: #111111; --fg: #f2f2f2; --muted: #b0b0b0; --line: #2c2c2c; --panel: #1a1a1a; --accent: #f2f2f2; --accent-fg: #111111; }
+    :root[data-theme="dark"] { --bg: #111111; --fg: #f2f2f2; --muted: #b0b0b0; --line: #2c2c2c; --accent: #f2f2f2; --accent-fg: #111111; }
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
-    header { border-bottom: 1px solid var(--line); }
-    header .wrap { display: flex; justify-content: space-between; align-items: center; min-height: 64px; gap: 12px; }
-    .brand { font-weight: 800; }
-    .brand span { color: var(--muted); font-weight: 600; }
-    h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; margin: 56px 0 16px; }
-    .lead { font-size: 1.15rem; color: var(--muted); max-width: 40em; }
-    .cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 56px; }
-    .btn { display: inline-block; padding: 12px 18px; border-radius: 8px; border: 1px solid var(--accent); color: var(--fg); text-decoration: none; font-weight: 700; }
-    .btn.primary { background: var(--accent); color: var(--accent-fg); }
-    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 48px; }
-    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
-    .card h2 { font-size: 1.05rem; margin: 0 0 6px; }
-    .card p { margin: 0; color: var(--muted); }
-    section h2.section { font-size: 1.4rem; margin: 0 0 12px; }
-    ul.plain { padding-left: 1.2em; color: var(--muted); }
-    footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; padding: 24px 0 40px; margin-top: 48px; }
-    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } h1 { margin-top: 36px; } }
+    main { max-width: 640px; margin: 0 auto; padding: 72px 16px; }
+    h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.15; margin: 0 0 12px; }
+    p { color: var(--muted); margin: 0 0 24px; }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+    a.btn { display: inline-block; padding: 12px 18px; border-radius: 8px; border: 1px solid var(--accent); color: var(--fg); text-decoration: none; font-weight: 700; }
+    a.btn.primary { background: var(--accent); color: var(--accent-fg); }
   </style>
 </head>
 <body>
-  <header><div class="wrap"><div class="brand">KitFlint <span>Glance</span></div><a class="btn" href="https://github.com/kitflint/glance">GitHub</a></div></header>
-  <main class="wrap">
-    <h1>Made for human eyes.<br>Built for clear decisions.</h1>
-    <p class="lead">Glance is a free, local-first project board that shows where a project stands at a glance: its stage, focus, next actions, evidence and what a human has actually reviewed. No account needed to start. No ads. No trackers.</p>
+  <main>
+    <h1>KitFlint Glance has moved</h1>
+    <p>The Glance page, with setup screenshots, MCP connection snippets and instructions for AI agents, is now at kitflint.com/glance/.</p>
     <div class="cta">
-      <a class="btn primary" href="https://github.com/kitflint/glance/releases/tag/v0.1.0">Download v0.1.0 pre-release</a>
-      <a class="btn" href="https://github.com/kitflint/glance/blob/main/docs/QUICKSTART.md">Read the Quickstart</a>
+      <a class="btn primary" href="https://kitflint.com/glance/">Go to kitflint.com/glance</a>
+      <a class="btn" href="https://github.com/kitflint/glance">Source on GitHub</a>
     </div>
-    <div class="grid">
-      <div class="card"><h2>Your board, on your machine</h2><p>Edit tasks, criteria and evidence locally. Save, reopen and back up at the same revision.</p></div>
-      <div class="card"><h2>Bring your own AI</h2><p>Local MCP tools let your assistant read the board and, if you opt in, make guarded updates. It can never record human acceptance.</p></div>
-      <div class="card"><h2>GitHub, both ways, if you want</h2><p>Import issues, pull requests and checks with their freshness, or publish reviewed issue changes after an exact preview.</p></div>
-    </div>
-    <section>
-      <h2 class="section">Honest about what it is</h2>
-      <ul class="plain">
-        <li>Version 0.1.0 is tested on Windows 11 x64 with Node.js 24. Other platforms are untested.</li>
-        <li>Pre-release usability walkthroughs were simulated, not run with real users. Your feedback is the first independent test.</li>
-        <li>Free and open source under the MIT license. Source archive SHA-256: <code style="word-break:break-all">85c245182fcdd3c5eb8c53ae34f46317127c892d3de4a2c66b0f5dd1b26b74ef</code></li>
-      </ul>
-    </section>
   </main>
-  <footer><div class="wrap">KitFlint Glance is a separate project from the KitFlint product. · <a href="https://github.com/kitflint/glance/blob/main/LICENSE">MIT License</a> · <a href="https://github.com/kitflint/glance/blob/main/SECURITY.md">Security</a></div></footer>
 </body>
 </html>
